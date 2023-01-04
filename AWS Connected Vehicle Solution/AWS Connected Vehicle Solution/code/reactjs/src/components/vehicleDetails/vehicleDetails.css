@@ -1,0 +1,35 @@
+.Vcard_style {
+    min-height: 100px;
+    height: 100%;
+    border: 1px solid #f3f3f3;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    box-shadow: none !important;
+    border-radius: 5px !important;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.vehicletable {
+    border: 1px solid #f4f4ff;
+}
+.vehicletable thead{
+    background: #046dab;
+}
+.vehicletable thead tr th{
+    padding: 10px;
+    font-weight: 700;
+    color: #fff;
+    border: 1px solid #0987d1;
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 0;
+}
+.vehicletable tbody{
+    
+}
+.vehicletable tbody tr td{
+    font-family: inherit;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+}

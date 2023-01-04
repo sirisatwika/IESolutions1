@@ -1,0 +1,951 @@
+[
+    {
+        "id": "b67f468db3bcebd9",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "035e97848f4d2cb4",
+        "type": "inject",
+        "z": "b67f468db3bcebd9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1500,
+        "wires": [
+            [
+                "bd870871716ccabe"
+            ]
+        ]
+    },
+    {
+        "id": "9577bcac4455b699",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle Trip Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/trips",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 540,
+        "y": 660,
+        "wires": [
+            [
+                "c980574ae2d630f4"
+            ]
+        ]
+    },
+    {
+        "id": "d3d690af1f2114d7",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicles Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            }
+        ],
+        "x": 490,
+        "y": 60,
+        "wires": [
+            [
+                "376aba7e06134dc2"
+            ]
+        ]
+    },
+    {
+        "id": "5ce93d68273bb3af",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle Trip Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/trips/{{trip_id}}",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 520,
+        "y": 580,
+        "wires": [
+            [
+                "99c308ebd8a8fdd3"
+            ]
+        ]
+    },
+    {
+        "id": "e04c241f71b0df17",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle Healthreport Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/healthreports",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 730,
+        "y": 280,
+        "wires": [
+            [
+                "7e3804b5445a5e4c"
+            ]
+        ]
+    },
+    {
+        "id": "d7721cd1f5fd6d41",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle DTC Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/dtc/{{dtc_id}}",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "72c13b3389c09930"
+            ]
+        ]
+    },
+    {
+        "id": "74f1c630a157ae6a",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle DTC Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/dtc",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 500,
+        "y": 100,
+        "wires": [
+            [
+                "47b70c6d0493c70d"
+            ]
+        ]
+    },
+    {
+        "id": "ad97e49ee85d0281",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle Healthreport Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/healthreports/{{report_id}}",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 570,
+        "y": 320,
+        "wires": [
+            [
+                "4c0cb6f3656a6001"
+            ]
+        ]
+    },
+    {
+        "id": "3d508c4deda6072f",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle Anomalies",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/anomalies",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 580,
+        "y": 480,
+        "wires": [
+            [
+                "85e51573c17d868f"
+            ]
+        ]
+    },
+    {
+        "id": "d89f6fb77de8e1b1",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "Get Vehicle Anomalies",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://1ddbgvb265.execute-api.us-east-1.amazonaws.com/prod/vehicles/{{vin}}/anomalies/{{anomaly_id}}",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-api-key",
+                "valueType": "other",
+                "valueValue": "IzSlVDNJtChuYZ9ddIQJ2ewjxWvtwis12g2MqPN4"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "eyJraWQiOiJtMk5LRHhEbVREQ2hyTXg5eVFONVpVYUxJSWo1MWZiMzlcL1c0UGdDcG16ST0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiN0FaSUdvN3llS1I0R0dIOWQ2cXpHZyIsInN1YiI6IjkzYzViY2JkLWY2ZDAtNGRhYS1hMWEwLTg0YmUwNDAwZjU1NyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QRzgwMlJybXciLCJjb2duaXRvOnVzZXJuYW1lIjoiYXdzdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiODcyNjcxZjAtZWM5Ni00ZDE0LWE5ZDMtZjRkMWRmYmZmZTBlIiwiYXVkIjoiN3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDIiLCJldmVudF9pZCI6Ijk4MmY2Njk1LWNiNGYtNDJkOC04OThlLTQ4NTZjMWQ2MTEyMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjcyODA3Nzg5LCJleHAiOjE2NzI4MTEzODksImlhdCI6MTY3MjgwNzc4OSwianRpIjoiODM5MDQ1YTAtZjQ5Ny00ODQ5LWExYmYtNTE0NjliZGVhMjhlIiwiZW1haWwiOiJha2FzaDAyOTlAZ21haWwuY29tIn0.cUn8q8G-zoahZOXCqlN3820VOwYypBiFtSzGRu5K36BSTB5fhnmmNo3tKAacSiSw3tnihIsT5BZ-jnzDLu15bqhzKb6vdj-y2wRMV-LJiZa_oUgzwz1Ig0wRBDpZQUSKiGEPC0rwkvrzhEXHAp--wbUQ-KhWciPAcBwcZSTwkOnneFdjQIQjU5d0fUg0sMpp6uf33SpRPziV_C6Q5CgPyiWTaz4S-93Uu4I-dPGAswl04IOhTcxeA3TFPsX5YULtIdT41BUf3oY_q0yj27Mer-YTBMTkDI1uGzycyaw3Z6XhQ7yqWMHYd1zXwPnlTR9UpCH8akYvNiFVLrf6SZfvJQ"
+            }
+        ],
+        "x": 580,
+        "y": 400,
+        "wires": [
+            [
+                "91072415ed63c0b8"
+            ]
+        ]
+    },
+    {
+        "id": "6f764cb055f239ae",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles",
+        "url": "/vehicles",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 60,
+        "wires": [
+            [
+                "d3d690af1f2114d7"
+            ]
+        ]
+    },
+    {
+        "id": "376aba7e06134dc2",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "51798e3d86098ace",
+        "type": "debug",
+        "z": "b67f468db3bcebd9",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "9afd505890c06450",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-Anomalies",
+        "url": "/vehicles/{vin}/anomalies",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 480,
+        "wires": [
+            [
+                "9009e867042606d0"
+            ]
+        ]
+    },
+    {
+        "id": "81d4c50f329c5a31",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-Trips",
+        "url": "/vehicles/:vin/trips/:trip_id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 580,
+        "wires": [
+            [
+                "22f8c299df713134"
+            ]
+        ]
+    },
+    {
+        "id": "ec3d3a8e21ab2043",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-Trips",
+        "url": "/vehicles/:vin/trips",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 660,
+        "wires": [
+            [
+                "9f83e3b7b07d74a8"
+            ]
+        ]
+    },
+    {
+        "id": "f177560d48fbe897",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-Anomalies",
+        "url": "/vehicles/{vin}/anomalies/{anomaly_id}",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "68cea0404ccd19f7"
+            ]
+        ]
+    },
+    {
+        "id": "0eabe98687df1232",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-Healthreports",
+        "url": "/vehicles/:vin/healthreports/:report_id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "e5d8b814dddc6cdc"
+            ]
+        ]
+    },
+    {
+        "id": "eb5abee42514cd16",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-Healthreports",
+        "url": "/vehicles/:vin/healthreports",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 280,
+        "wires": [
+            [
+                "6c9ee426f17271a6"
+            ]
+        ]
+    },
+    {
+        "id": "023d608d85eebb80",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-DTC",
+        "url": "/vehicles/:vin/dtc/:dtc_id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "7850ea0abd785203"
+            ]
+        ]
+    },
+    {
+        "id": "1479c5be15ae64d4",
+        "type": "http in",
+        "z": "b67f468db3bcebd9",
+        "name": "AWs-CV-Vehicles-DTC",
+        "url": "/vehicles/:vin/dtc",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "2fb7f1bb789d5b08"
+            ]
+        ]
+    },
+    {
+        "id": "47b70c6d0493c70d",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "72c13b3389c09930",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "7e3804b5445a5e4c",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4c0cb6f3656a6001",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "91072415ed63c0b8",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "85e51573c17d868f",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "99c308ebd8a8fdd3",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c980574ae2d630f4",
+        "type": "http response",
+        "z": "b67f468db3bcebd9",
+        "name": "Vehiclesresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "bd870871716ccabe",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "aws-cv-get",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost/dashboard",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 390,
+        "y": 1500,
+        "wires": [
+            [
+                "51798e3d86098ace"
+            ]
+        ]
+    },
+    {
+        "id": "9f83e3b7b07d74a8",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vintrips",
+        "func": "msg.vin = msg.req.params.vin;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 700,
+        "wires": [
+            [
+                "9577bcac4455b699"
+            ]
+        ]
+    },
+    {
+        "id": "22f8c299df713134",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vintrip",
+        "func": "msg.vin = msg.req.params.vin;\nmsg.trip_id = msg.req.params.trip_id;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 620,
+        "wires": [
+            [
+                "5ce93d68273bb3af"
+            ]
+        ]
+    },
+    {
+        "id": "9009e867042606d0",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vinanomalies",
+        "func": "msg.vin = msg.req.params.vin;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 540,
+        "wires": [
+            [
+                "3d508c4deda6072f"
+            ]
+        ]
+    },
+    {
+        "id": "e5d8b814dddc6cdc",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vinhr",
+        "func": "msg.vin = msg.req.params.vin;\nmsg.report_id = msg.req.params.report_id;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 360,
+        "wires": [
+            [
+                "ad97e49ee85d0281"
+            ]
+        ]
+    },
+    {
+        "id": "6c9ee426f17271a6",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vinhrs",
+        "func": "msg.vin = msg.req.params.vin;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "e04c241f71b0df17"
+            ]
+        ]
+    },
+    {
+        "id": "68cea0404ccd19f7",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vinanomalies",
+        "func": "msg.vin = msg.req.params.vin;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "d89f6fb77de8e1b1"
+            ]
+        ]
+    },
+    {
+        "id": "2fb7f1bb789d5b08",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vindtcs",
+        "func": "msg.vin = msg.req.params.vin;\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "74f1c630a157ae6a"
+            ]
+        ]
+    },
+    {
+        "id": "7850ea0abd785203",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "vindtc",
+        "func": "msg.vin = msg.req.params.vin;\nmsg.dtc_id = msg.req.params.dtc_id\nconsole.log(msg.vin);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "d7721cd1f5fd6d41"
+            ]
+        ]
+    },
+    {
+        "id": "63be06bce099f3fa",
+        "type": "http request",
+        "z": "b67f468db3bcebd9",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://cv-nodered-api.auth.us-east-1.amazoncognito.com/oauth2/token",
+        "tls": "2cbccfc6732a6b3a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/x-www-form-urlencoded"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "Basic N3FubG5qcWR1b2luNWNpZmNub2pkaTgyMDI6MWZ2amFpbWxsOWg0YmJjYTh0dW05bGs4c2FvbnVlbGdkanRiMWVmZDliYzNiNjNqaTE4bA=="
+            }
+        ],
+        "x": 370,
+        "y": 1060,
+        "wires": [
+            [
+                "3020d5cb18e0b7f4"
+            ]
+        ]
+    },
+    {
+        "id": "062bd84d9efdf41f",
+        "type": "debug",
+        "z": "b67f468db3bcebd9",
+        "name": "debug 12",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "594f59e7f74a5005",
+        "type": "inject",
+        "z": "b67f468db3bcebd9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 1040,
+        "wires": [
+            [
+                "ec8a2be981da8583"
+            ]
+        ]
+    },
+    {
+        "id": "ec8a2be981da8583",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "function 1",
+        "func": "msg.headers = {\n    \"content-type\": \"application/x-www-form-urlencoded\"\n}\n\nmsg.payload = {\n    \"grant_type\":\"authorization_code\",\n    \"client_id\":\"7qnlnjqduoin5cifcnojdi8202\",\n    \"code\":\"eaa99363-d142-4c6a-ab0f-80e23f1914f0\",\n    \"redirect_uri\":\"http://localhost:8081/\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 1100,
+        "wires": [
+            [
+                "63be06bce099f3fa"
+            ]
+        ]
+    },
+    {
+        "id": "3020d5cb18e0b7f4",
+        "type": "function",
+        "z": "b67f468db3bcebd9",
+        "name": "function 2",
+        "func": "msg.payload = JSON.parse(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 1100,
+        "wires": [
+            [
+                "062bd84d9efdf41f"
+            ]
+        ]
+    },
+    {
+        "id": "2cbccfc6732a6b3a",
+        "type": "tls-config",
+        "name": "AWSIoT",
+        "cert": "/home/ubuntu/awsnoderedthing.cert.pem",
+        "key": "/home/ubuntu/awsnoderedthing.private.key",
+        "ca": "/home/ubuntu/root-CA.crt",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    }
+]
